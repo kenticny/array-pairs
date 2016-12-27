@@ -1,0 +1,16 @@
+{
+  "name": "array-pairs",
+  "version": "0.0.1",
+  "description": "Array pairs transfrom to object.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "array pairs",
+    "object",
+    "arrays"
+  ],
+  "author": "kenticny <kenticny@gmail.com>",
+  "license": "MIT"
+}
