@@ -28,7 +28,7 @@ const testData = {
   }
 };
 
-describe('Array pairs unit test', () => {
+describe('Array pairs decode unit test', () => {
   it('test case 1 arraypairs to objects', () => {
     var results = arraypairs.decode(testData.case1.arraypairs);
     arrayPairsToObjectsHandle(results, testData.case1.objects);
@@ -60,7 +60,44 @@ describe('Array pairs unit test', () => {
   });
 });
 
+describe('Array pairs encode unit test', () => {
+  it('test case 1 object to arraypairs', () => {
+    var results = arraypairs.encode(testData.case1.objects);
+    objectsToArrayPairsHandle(results, testData.case1.arraypairs);
+  });
+
+  it('test case 2 object to arraypairs', () => {
+    var results = arraypairs.encode(testData.case2.objects);
+    objectsToArrayPairsHandle(results, testData.case2.arraypairs);
+  });
+
+  it('test case 3 object to arraypairs', () => {
+    var results = arraypairs.encode(testData.case3.objects);
+    objectsToArrayPairsHandle(results, testData.case3.arraypairs);
+  });
+
+  it('test case 4 object to arraypairs', () => {
+    var results = arraypairs.encode(testData.case4.objects);
+    objectsToArrayPairsHandle(results, testData.case4.arraypairs);
+  });
+
+  it('test case 5 object to arraypairs', () => {
+    var results = arraypairs.encode(testData.case5.objects);
+    objectsToArrayPairsHandle(results, testData.case5.arraypairs);
+  });
+
+  it('test case 6 object to arraypairs', () => {
+    var results = arraypairs.encode(testData.case6.objects);
+    objectsToArrayPairsHandle(results, testData.case6.arraypairs);
+  });
+});
+
 function arrayPairsToObjectsHandle(results, standard) {
   results.should.be.an.Object();
+  JSON.stringify(results).should.equal(JSON.stringify(standard));
+}
+
+function objectsToArrayPairsHandle(results, standard) {
+  results.should.be.an.Array();
   JSON.stringify(results).should.equal(JSON.stringify(standard));
 }
