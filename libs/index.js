@@ -6,23 +6,29 @@ function decode(array) {
   if(!Array.isArray(array)) {
     throw new TypeError('Parameter must be an array.');
   }
-  if(!everyElementsAreArray(array)) {
-    return array;
-  }
-  console.log('Inner')
+  if(!isObjectArray(array)) return array;
+
   return array.reduce((results, currentItem) => {
     var key = currentItem[0], value = currentItem[1];
-    console.log(value)
-    if(Array.isArray(value) && Array.isArray(value[0])) {
+
+    if(isObjectArray(value)) {
       value = decode(value);
+    }else if(Array.isArray(value)) {
+      value = value.map(n => {
+        if(isObjectArray(n)) {
+          return decode(n);
+        }
+        return n;
+      });
     }
+
     results[key] = value;
     return results;
   }, {});
 }
 
-function everyElementsAreArray(array) {
-  return array.every(item => Array.isArray(item));
+function isObjectArray(array) {
+  return Array.isArray(array) && array.every(n => Array.isArray(n));
 }
 
 module.exports.encode = encode;
