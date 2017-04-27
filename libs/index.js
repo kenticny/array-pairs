@@ -40,27 +40,30 @@ function isObjectArray(array) {
   return Array.isArray(array) && array.every(n => Array.isArray(n));
 }
 
-// function transformObjectToArrayPairs(obj, base) {
-//   var keys = Object.keys(obj);
-//   if(keys.length == 0) return base;
-//   base = base || [];
-//   keys.forEach(n => {
-//     var pairs = [n];
-//     var val = obj[n];
-//     if(Array.isArray(val)) {
-//       val = val.map(n => {
-//         if(isObject(n)) {
-//           return transformObjectToArrayPairs(n);
-//         }
-//         return
-//       });
-//     }else if(isObject(val)) {
+function transformObjectToArrayPairs(obj, base) {
+  var keys = Object.keys(obj);
+  if(keys.length == 0) return base;
+  base = base || [];
+  keys.forEach(n => {
+    var pairs = [n];
+    var val = obj[n];
+    switch(Object.prototype.toString.call(val)) {
+      case '[object Array]':
+        
+        break;
+      case '[object Object]':
+        break;
+      default:
+        pairs.push(val);
+        break;
+    }
+    base.push(pairs);
+  });
+}
 
-//     }else {
-
-//     }
-//   });
-// }
+function transformArrayToArrayPairs(array) {
+  
+}
 
 function isObject(variable) {
   var typestring = Object.prototype.toString.call(variable);
