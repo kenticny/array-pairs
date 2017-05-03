@@ -1,7 +1,7 @@
 function encode(obj) {
   var keys = Object.keys(obj);
   if(keys.length == 0) return obj;
-  
+  return transformObjectToArrayPairs(obj);
 }
 
 /**
@@ -40,29 +40,46 @@ function isObjectArray(array) {
   return Array.isArray(array) && array.every(n => Array.isArray(n));
 }
 
-function transformObjectToArrayPairs(obj, base) {
+function assignTypeHandle(val) {
+  switch(Object.prototype.toString.call(val)) {
+    case '[object Array]':
+      return transformArrayToArrayPairs(val);
+      break;
+    case '[object Object]':
+      return transformObjectToArrayPairs(val);
+      break;
+    default:
+      return transformNormalToArrayPairs(val);
+      break;
+  }
+}
+
+function transformObjectToArrayPairs(obj) {
   var keys = Object.keys(obj);
+  var base = [];
   if(keys.length == 0) return base;
-  base = base || [];
   keys.forEach(n => {
     var pairs = [n];
     var val = obj[n];
-    switch(Object.prototype.toString.call(val)) {
-      case '[object Array]':
-        
-        break;
-      case '[object Object]':
-        break;
-      default:
-        pairs.push(val);
-        break;
-    }
+    val = assignTypeHandle(val);
+    pairs.push(val);
     base.push(pairs);
   });
+  return base;
 }
 
 function transformArrayToArrayPairs(array) {
-  
+  if(!Array.isArray(array)) {
+    return array;
+  }
+  for(var i = 0; i < array.length; i++) {
+    array[i] = assignTypeHandle(array[i]);
+  }
+  return array;
+}
+
+function transformNormalToArrayPairs(variable) {
+  return variable;
 }
 
 function isObject(variable) {
