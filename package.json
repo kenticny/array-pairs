@@ -1,10 +1,14 @@
 {
   "name": "array-pairs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Array pairs transfrom to object.",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kenticny/array-pairs.git"
   },
   "keywords": [
     "array pairs",
