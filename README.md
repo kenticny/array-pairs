@@ -32,9 +32,9 @@ encode transform to:
 - `.encode(obj)`: encode object to array pairs.
 
     ```javascript
-    var arrayPairs = require("array-pairs");
+    const arrayPairs = require("array-pairs");
 
-    var obj = { ... };
+    let obj = { ... };
 
     arrayPairs.encode(obj);
     ```
@@ -42,9 +42,9 @@ encode transform to:
 - `.decode(array)`: decode array pairs to object.
 
     ```javascript
-    var arrayPairs = require("array-pairs");
+    const arrayPairs = require("array-pairs");
 
-    var arr = [ ... ]
+    let arr = [ ... ]
 
     arrayPairs.decode(arr);
     ```
