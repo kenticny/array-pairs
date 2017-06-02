@@ -1,5 +1,7 @@
 # Array pairs
 
+![](https://travis-ci.org/kenticny/array-pairs.svg?branch=master)
+
 ### Install
 
 ```text
