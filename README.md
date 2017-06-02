@@ -1,6 +1,6 @@
 # Array pairs
 
-![](https://travis-ci.org/kenticny/array-pairs.svg?branch=master)
+[![Build Status](https://travis-ci.org/kenticny/array-pairs.svg?branch=master)](https://travis-ci.org/kenticny/array-pairs)
 
 ### Install
 
